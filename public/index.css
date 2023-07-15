@@ -5,22 +5,31 @@ body {
 
 #content-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    margin: 20px;
+    height: calc(100vh - 5rem - 40px);
+
+    background-color: green;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 #p5-container {
     overflow: hidden;
     display: flex;
-    padding: 20px 0 20px 20px;
+    padding: 20px;
     align-items: center;
     justify-content: center;
-    width: 65%;
+    width: calc(100% - 80px);
+    background-color: #222;
 }
 
 #p5-canvas {
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 #p5-canvas > canvas {
@@ -28,22 +37,47 @@ body {
 }
 
 #panels-container {
+    width: 120px;
+    background-color: #111;
+    z-index: 100;
+
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    gap: 1rem;
-
-    width: 35%;
-    padding: 20px;
-    font-size: 15px;
-    line-height: 18px;
+    padding: 15px;
+    gap: 15px;
 }
 
-#panels-container > div {
-    padding: 1rem;
-    background-color: #AAA;
+.panel-item {
+    position: relative;
+    color: #AAA;
+    text-align: center;
+    padding: 8px 20px;
+    border-radius: 5px;
+
+    background-color: #222;
+    cursor: pointer;
+}
+
+.expandable-panel {
+    padding: 1rem 1.5rem;
+    background-color: rgba(100,100,100,0.8);
+    color: #DDD;
     border-radius: 5px;
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
+
+    font-size: 1.1rem;
+    line-height: 1.3rem;
+    text-align: left;
+    
+    position: absolute;
+    width: 400px;
+    top: 0;
+    left: 140px;
+    visibility: hidden;
+}
+
+.panel-item:hover > .expandable-panel, .panel-item.keep > .expandable-panel {
+    visibility: visible;
 }
 
 form {

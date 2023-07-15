@@ -29,10 +29,11 @@ let config = {
         scales: {
             x: {
                 display: true,
+                ticks: { color: '#DDD' },
                 title: {
                     display: true,
                     text: 'Generation',
-                    // color: '#911',
+                    color: '#DDD',
                     font: {
                         // family: 'Comic Sans MS',
                         size: window.innerWidth < 1400? 12 : 17,
@@ -51,10 +52,10 @@ let config = {
             },
             y: {
                 display: true,
+                ticks: { color: '#DDD' },
                 title: {
                     display: false,
                     text: "Performance",
-                    // color: '#911',
                     font: {
                         // family: 'Comic Sans MS',
                         size: window.innerWidth < 1400? 12 : 17,

@@ -21,7 +21,7 @@ resetDimensions()
 function resetDimensions() {
     numCol = currentMap[0].length;
     numRow = currentMap.length;
-    gridSize = Math.floor(p5CanvasElem.clientWidth / numCol);
+    gridSize = Math.min(Math.floor(p5CanvasElem.clientWidth / numCol), Math.floor(p5CanvasElem.clientHeight / numRow));
     canvaWidth = gridSize * numCol;
     canvaHeight = gridSize * numRow;
 }

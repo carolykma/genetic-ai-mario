@@ -81,3 +81,5 @@ Size of the gene pool - it proves to be crucial to the population's learning spe
 To increase calculation speed, I added a configuration to calculate multiple generations of Marios in the background before each display. This way, the calculation speed will not be limited by the browser's frame rate, and user can visualize the learning progress without having to watch hundreds of generations play the game one by one.
 
 (This part of the documentations is under progress)
+
+<a href="https://www.freepik.com/search?format=search&last_filter=query&last_value=line+chart&query=line+chart&sort=relevance&type=icon">Icon by ibobicon</a>
