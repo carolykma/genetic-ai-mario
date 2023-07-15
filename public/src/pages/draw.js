@@ -1,28 +1,33 @@
 // map dimensions
-let numCol = 35;
-let numRow = 20;
+let numCol = 45;
+let numRow = 25;
 const emptyMap = () => Array(numRow).fill(Array(numCol).fill("x").join(""));
 const defaultMap = [
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "&&&&&pppp&&&&&&&xxxxxxxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxxxxxxmxxxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxx&&&&&&xxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxTxx",
-  "xxxxxxxxxxxxxxxxxx&&&&&&&&&&&&&&&&&",
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "&&&&&&&&&&&pppp&&&&&&&xxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxmxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxx&&&&&&xxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxTxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxx&&&&&&&&&&&&&&&&&&&&&",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ];
 
 // canvas dimensions
@@ -70,15 +75,23 @@ function setup() {
 function draw() {
   background("lightGrey");
   itemList.forEach(item => item.paint());
+
+  const mouseIdx = getMouseIdx();
+  if (selected && mouseIdx) {
+    if (selected == 'x') return;
+    const props = itemKeyList[selected];
+    const previewBlock = new props.class(null, props, mouseIdx[0], mouseIdx[1]);
+    previewBlock.paint();
+  }
 }
 
 // mouse press
 let prevX, prevY;
 function mouseDragged() {
-  if (mouseX >= gridSize * numCol || mouseY >= gridSize * numRow) return;
-  if (mouseX < 0 || mouseY < 0) return;
-  const x = Math.floor(mouseX / gridSize);
-  const y = Math.floor(mouseY / gridSize);
+  const mouseIdx = getMouseIdx();
+  if (!mouseIdx) return;
+
+  const [x, y] = mouseIdx;
   if (prevX == x && prevY == y) return;
 
   prevX = x;
@@ -86,14 +99,20 @@ function mouseDragged() {
   currentMap[y] = currentMap[y].substring(0, x) + selected + currentMap[y].substring(x + 1);
   loadItemsFromMap();
 }
-
 function mousePressed() {
   mouseDragged();
 }
-
 function mouseReleased() {
   const formattedMatrix = currentMap.map(row => row.replaceAll("x", " "));
   localStorage.setItem('drawnMap', JSON.stringify(formattedMatrix));
+}
+
+function getMouseIdx() {
+  if (mouseX >= gridSize * numCol || mouseY >= gridSize * numRow) return;
+  if (mouseX < 0 || mouseY < 0) return;
+  const x = Math.floor(mouseX / gridSize);
+  const y = Math.floor(mouseY / gridSize);
+  return [x, y];
 }
 
 
