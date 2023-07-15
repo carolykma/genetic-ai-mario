@@ -9,9 +9,9 @@ body {
     margin: 20px;
     height: calc(100vh - 5rem - 40px);
 
-    background-color: green;
     border-radius: 10px;
     overflow: hidden;
+    border: #444 solid 1px;
 }
 
 #p5-container {
@@ -58,6 +58,18 @@ body {
     cursor: pointer;
 }
 
+.panel-item:hover {
+    background-color: #333;
+}
+
+.panel-item.selected {
+    background-color: #333;
+}
+
+.panel-btn:hover {
+    transform: scale(1.05);
+}
+
 .expandable-panel {
     padding: 1rem 1.5rem;
     background-color: rgba(100,100,100,0.8);
@@ -71,13 +83,16 @@ body {
     
     position: absolute;
     width: 400px;
-    top: 0;
     left: 140px;
+    
     visibility: hidden;
+    top: 10px;
+    transition: all 0.2s;
 }
 
-.panel-item:hover > .expandable-panel, .panel-item.keep > .expandable-panel {
+.panel-item:hover > .expandable-panel, .panel-item.selected > .expandable-panel {
     visibility: visible;
+    top: 0;
 }
 
 form {

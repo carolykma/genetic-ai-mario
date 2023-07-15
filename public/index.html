@@ -17,7 +17,8 @@
     <div id="content-container">
         <div id="panels-container">
 
-            <div class="panel-item" id="stats-btn">STATS
+            <div class="panel-item expandable-panel-btn" id="stats-btn" 
+            onclick="selectPanel('statsPanel')">STATS
                 <div id="data-panel" class="expandable-panel">
                     <strong><u>Generation <span id="batch-number">0</span></strong></u><br>
                     <div id="distX-data">
@@ -37,7 +38,8 @@
                 </div>
             </div>
 
-            <div class="panel-item" id="config-btn">CONFIG
+            <div class="panel-item expandable-panel-btn" id="config-btn" 
+            onclick="selectPanel('configPanel')">CONFIG
                 <div class="expandable-panel">
                     <strong><u>Test Configurations</u></strong><br>
                     <div>
@@ -52,7 +54,8 @@
                 </div>
             </div>
 
-            <div class="panel-item" id="algo-btn">ALGO
+            <div class="panel-item expandable-panel-btn" id="algo-btn" 
+            onclick="selectPanel('algoPanel')">ALGO
                 <div id="control-panel" class="expandable-panel">
                     <strong><u>Genetic Algorithm</u></strong><br>
                     <form id="p5-index-form">
@@ -83,15 +86,19 @@
                     </form>
                 </div>
             </div>
-            <div class="panel-item" id="restart-btn" style="background-color: green; color: black;">RESTART</div>
+            <div class="panel-item panel-btn" id="restart-btn" style="background-color: green; color: black;">RESTART</div>
             <div style="display: flex; justify-content: space-between;">
-                <div class="panel-item" id="pause-btn" style="background-color: red; color: black; width: 45%; padding: 10px 0;">l l</div>
-                <div class="panel-item" id="play-btn" style="background-color: orange; color: black; width: 45%; padding: 10px 0;">▷</div>
+                <div class="panel-item panel-btn" id="pause-btn"
+                    style="background-color: red; color: black; width: 45%; padding: 10px 0;" onclick="noLoop()">l l
+                </div>
+                <div class="panel-item panel-btn" id="play-btn"
+                    style="background-color: orange; color: black; width: 45%; padding: 10px 0;" onclick="loop()">▷
+                </div>
             </div>
         </div>
 
 
-        <div id="p5-container">
+        <div id="p5-container" onclick="clearSelectedPanels()">
             <div id="p5-canvas"></div>
         </div>
     </div>

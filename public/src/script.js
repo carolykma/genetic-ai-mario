@@ -270,6 +270,12 @@ const UIControls = {
 
     // map selection
     mapIndex: document.querySelector('#map-index'),
+    
+    // panels
+    statsPanel: document.querySelector('#stats-btn'),
+    configPanel: document.querySelector('#config-btn'),
+    algoPanel: document.querySelector('#algo-btn'),
+    allPanelBtns: document.querySelectorAll('.expandable-panel-btn'),
 
     // restart | play | pause
     restart: document.querySelector("#restart-btn"),
@@ -278,6 +284,7 @@ const UIControls = {
 }
 const UIDisplays = {
     mapSelectionDiv: document.querySelector('#map-selection'),
+
     
     // stats
     batchNumber: document.querySelector('#batch-number'),
@@ -349,12 +356,19 @@ UIControls.restart.addEventListener('click', function (event) {
     // reset
     loadParamsToDOM();
     resetP5();
-})
+});
 
-UIControls.play.addEventListener('click', function () {
-    loop()
-})
-
-UIControls.pause.addEventListener('click', function () {
-    noLoop()
-})
+// keep selected panels visible
+let selectedPanel = null;
+function clearSelectedPanels() {
+    UIControls.allPanelBtns.forEach(elem => elem.classList.remove('selected'));
+}
+function selectPanel(key) {
+    const elem = UIControls[key];
+    if (!elem.classList.contains('selected')) {
+        UIControls.allPanelBtns.forEach(elem => elem.classList.remove('selected'));
+        elem.classList.add('selected');
+    } else {
+        UIControls.allPanelBtns.forEach(elem => elem.classList.remove('selected'));
+    }
+}
