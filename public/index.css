@@ -62,12 +62,20 @@ body {
     background-color: #333;
 }
 
+.panel-item:active {
+    background-color: #444;
+}
+
 .panel-item.selected {
     background-color: #333;
 }
 
 .panel-btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
+}
+
+.panel-btn:active {
+    transform: scale(1.06);
 }
 
 .expandable-panel {
