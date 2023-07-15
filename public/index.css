@@ -22,6 +22,7 @@ body {
     justify-content: center;
     width: calc(100% - 80px);
     background-color: #222;
+    position: relative;
 }
 
 #p5-canvas {
@@ -34,6 +35,22 @@ body {
 
 #p5-canvas > canvas {
     border-radius: 5px;
+}
+
+#generation-box {
+    position: absolute;
+    top: 0;
+    /* right: 0; */
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: #DDD;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    opacity: 0.5;
+    padding: 10px 20px;
+    border-radius: 0 0 5px 5px;
+    font-size: 25px;
+    line-height: 25px;
 }
 
 #panels-container {

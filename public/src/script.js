@@ -243,7 +243,7 @@ function paint() {
 
     // show text at the end of batch
     if (batchPerRound > 1 && world.currentFrame == batchTime) {
-        fill("blue")
+        fill("white")
         textSize(gridSize * 0.8)
         if (world.currentBatch < batchNum) {
             text(`Calculating ${batchPerRound} generations...`, gridSize * 2, gridSize * 2)

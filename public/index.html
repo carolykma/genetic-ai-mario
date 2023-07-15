@@ -20,15 +20,17 @@
             <div class="panel-item expandable-panel-btn" id="stats-btn" 
             onclick="selectPanel('statsPanel')">STATS
                 <div id="data-panel" class="expandable-panel">
-                    <strong><u>Generation <span id="batch-number">0</span></strong></u><br>
+                    <!-- <strong><u>Generation <span id="batch-number">0</span></u></strong><br> -->
                     <div id="distX-data">
-                        Initial distance x: <span id="initial-distance" class="stats">-</span> (px)<br>
-                        Current distance x: <span id="current-distance" class="stats">-</span> (px)<br>
+                        <strong><u>Distance X Travelled</u></strong><br>
+                        Initial: <span id="initial-distance" class="stats">-</span> (px)<br>
+                        Current: <span id="current-distance" class="stats">-</span> (px)<br>
                     </div>
                     <div id="shortestPath-data">
-                        Initial path distance to target: <span id="initial-path-distance-to-target"
+                        <strong><u>Distance From Target</u></strong><br>
+                        Initial: <span id="initial-path-distance-to-target"
                             class="stats">-</span> (grids)<br>
-                        Current path distance to target: <span id="current-path-distance-to-target"
+                        Current: <span id="current-path-distance-to-target"
                             class="stats">-</span> (grids)<br>
                     </div>
                     History best: <span id="history-best" class="stats">-</span><br>
@@ -99,6 +101,7 @@
 
 
         <div id="p5-container" onclick="clearSelectedPanels()">
+            <div id="generation-box"><strong>Generation: <span id="batch-number">0</span></strong></div>
             <div id="p5-canvas"></div>
         </div>
     </div>

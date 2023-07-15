@@ -13,8 +13,8 @@ let colorMode = "speciation" // "normal" | "speciation"
 
 // GA batch params
 this.batchSize = 50 // number of marios
-this.batchTime = 200 // (in frames)
-this.batchNum = 100 // divisible by batchPerRound
+this.batchTime = 300 // (in frames)
+this.batchNum = 1000 // divisible by batchPerRound
 this.batchPerRound = 10
 
 class GA extends GAExtra {
