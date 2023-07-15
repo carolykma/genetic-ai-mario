@@ -1,0 +1,78 @@
+body {
+    background-color: #444;
+    overflow: hidden;
+}
+
+#content-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#p5-container {
+    overflow: hidden;
+    display: flex;
+    padding: 20px 0 20px 20px;
+    align-items: center;
+    justify-content: center;
+    width: 65%;
+}
+
+#p5-canvas {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#p5-canvas > canvas {
+    border-radius: 5px;
+}
+
+#panels-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+
+    width: 35%;
+    padding: 20px;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+#panels-container > div {
+    padding: 1rem;
+    background-color: #AAA;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+form {
+    display: flex;
+    gap: 1em;
+}
+
+input[type="number"] {
+    width: 3em;
+}
+
+#myChart{
+    height: 95% !important;
+    width: 95% !important;
+}
+
+@media (max-width: 1000px) {
+    body {
+        overflow-y: auto;
+    }
+    #content-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    #p5-container {
+        width: 95%;
+        padding: 20px;
+    }
+    #panels-container {
+        width: 80%;
+    }
+}

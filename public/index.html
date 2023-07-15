@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Genetic AI Mario | Default Maps</title>
+</head>
+
+<body>
+    <div class="navbar"></div>
+
+    <div id="content-container">
+        <div id="p5-container">
+            <div id="p5-canvas"></div>
+        </div>
+        <div id="panels-container">
+            <div id="data-panel">
+                <strong>Generation <span id="batch-number">0</span></strong><br>
+                <div id="distX-data">
+                    Initial distance x: <span id="initial-distance" class="stats">-</span> (px)<br>
+                    Current distance x: <span id="current-distance" class="stats">-</span> (px)<br>
+                </div>
+                <div id="shortestPath-data">
+                    Initial path distance to target: <span id="initial-path-distance-to-target" class="stats">-</span> (grids)<br>
+                    Current path distance to target: <span id="current-path-distance-to-target" class="stats">-</span> (grids)<br>
+                </div>
+                History best: <span id="history-best" class="stats">-</span><br>
+                <div id="myChart-controller">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+            <div id="control-panel">
+                <strong>Controls </strong><br>
+                <form id="p5-index-form">
+                    <div>
+                        <div id="map-selection">Map selection: <input type="number" id="map-index" name="map-index" min=0
+                                max=5><br></div>
+                        Time limit (sec): <input type="number" id="batch-time" name="batch-time"><br>
+                        No. of Mario: <input type="number" id="num-of-mario" name="num-of-mario" min=10 max=300><br>
+                        Total no. of generation: <input type="number" id="num-of-gen" name="num-of-gen"><br>
+                        Generation per round: <input type="number" id="gen-per-round" name="gen-per-round" min=1
+                            max=100><br>
+
+                        <input type="submit" id="restart-btn" value="Restart">
+                    </div>
+                    <div>
+                        <label for="ga-mode">GA mode: </label>
+                        <select id="ga-mode">
+                            <option value="normal">Normal</option>
+                            <option value="diversity">Diversity</option>
+                            <option value="antiStuck">AntiStuck</option>
+                        </select><br>
+                        <label for="gene-type">Gene type: </label>
+                        <select id="gene-type">
+                            <option value="moves">Moves</option>
+                            <option value="clicks">Clicks</option>
+                        </select><br>
+                        <label for="evaluation-mode">Evaluation mode: </label>
+                        <select id="evaluation-mode">
+                            <option value="distX">Distance of X</option>
+                            <option value="shortestPath">Shortest Path</option>
+                        </select><br>
+                        <label for="color-mode">Color for Mario: </label>
+                        <select id="color-mode">
+                            <option value="normal">Normal</option>
+                            <option value="speciation">Speciation</option>
+                        </select><br>
+                        Distance threshold: <input type="number" id="distance-threshold" min=2 max=15><br>
+                    </div>
+
+                </form>
+                <button id="play-btn">Play</button>
+                <button id="pause-btn">Pause</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+    
+    <script src="components/navbar.js"></script>
+    <script src="components/chart.js"></script>
+
+    <script src="src/game/block.js"></script>
+    <script src="src/game/characters.js"></script>
+    <script src="src/ai/ga-extra.js"></script>
+    <script src="src/ai/ga.js"></script>
+    
+    <script src="src/data/const.js"></script>
+    <script src="src/utils/pathfinding.js"></script>
+    <script src="src/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="draw.css">
+    <title>Genetic AI Mario | Map Editor </title>
+</head>
+
+<body>
+    <div class="navbar"></div>
+
+    <div id="content-container">
+        <div id="left-side-container">
+            <div id="color-selector-controller">
+                <div id="&-selector" class="item-selector" onClick="selectBlock('&')">
+                    <img id="&-icon" class="item-icon" src="img/brick.png">
+                    Block
+                    <div class="item-tooltip">Just a block...</div>
+                </div>
+
+                <div id="T-selector" class="item-selector" onClick="selectBlock('T')">
+                    <img id="T-icon" class="item-icon" src="img/brick.png">
+                    Target
+                    <div class="item-tooltip">Reach here to win (qty: 1)</div>
+                </div>
+
+                <div id="^-selector" class="item-selector" onClick="selectBlock('^')">
+                    <img id="^-icon" class="item-icon" src="img/brick.png">
+                    Trap
+                    <div class="item-tooltip">A...fake block?</div>
+                </div>
+
+                <div id="p-selector" class="item-selector" onClick="selectBlock('p')">
+                    <img id="p-icon" class="item-icon" src="img/brick.png">
+                    Spikes
+                    <div class="item-tooltip">Poisonous spikes that kill Mario</div>
+                </div>
+
+                <div id="m-selector" class="item-selector" onClick="selectBlock('m')">
+                    <img id="m-icon" class="item-icon" src="img/brick.png">
+                    Enemy
+                    <div class="item-tooltip">Moving mushroom that kills Mario</div>
+                </div>
+
+                <div id="i-selector" class="item-selector" onClick="selectBlock('i')">
+                    <img id="i-icon" class="item-icon" src="img/brick.png">
+                    Portal-I
+                    <div class="item-tooltip">Transfers Mario to Portal-O (max: 1)</div>
+                </div>
+
+                <div id="o-selector" class="item-selector" onClick="selectBlock('o')">
+                    <img id="o-icon" class="item-icon" src="img/brick.png">
+                    Portal-O
+                    <div class="item-tooltip">Transfers Mario from Portal-I (max: 1)</div>
+                </div>
+
+                <div id="c-selector" class="item-selector" onClick="selectBlock('c')">
+                    <img id="c-icon" class="item-icon" src="img/brick.png">
+                    Ice
+                    <div class="item-tooltip">Slippery! Mario moves faster</div>
+                </div>
+
+                <div id="x-selector" class="item-selector" onClick="selectBlock('x')">
+                    <img id="x-icon" class="item-icon" src="img/cancel.png">
+                    Eraser
+                    <div class="item-tooltip">Erase items from map</div>
+                </div>
+
+                <div class="action-button" onclick="goToMap()" style="margin-top: 10px;">PLAY!</div>
+                <div class="action-button" onclick="resetDrawing()" style="background-color: red;">Clear</div>
+            </div>
+        </div>
+
+        <div id="right-side-container">
+            <div id="p5-canvas"></div>
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+    <script src="components/navbar.js"></script>
+    <script src="src/game/block.js"></script>
+    <script src="src/game/characters.js"></script>
+
+    <script src="src/data/const.js"></script>
+    <script src="src/pages/draw.js"></script>
+</body>
+
+</html>
